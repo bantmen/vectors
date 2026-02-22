@@ -7,6 +7,7 @@ Prioritizes clarity and correctness over raw performance.
 ## Architecture
 - `src/quantizers/base.py` defines the abstract `Quantizer` interface (fit/encode/decode/search)
 - `src/quantizers/pq.py` and `src/quantizers/rabitq.py` implement the two methods
+- `src/quantizers/reranked.py` wraps any Quantizer with exact-distance re-ranking (shortlist + exact L2)
 - `src/datasets/loader.py` downloads/caches HDF5 from ann-benchmarks
 - `src/search/exhaustive.py` provides brute-force exact k-NN baseline
 - `src/evaluation/` contains metrics, benchmarking, and plotting
