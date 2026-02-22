@@ -15,8 +15,8 @@ pip install -e ".[dev]"
 ## Download data
 
 ```bash
-python scripts/download_datasets.py                          # all datasets
-python scripts/download_datasets.py --datasets sift-128-euclidean  # just SIFT-128
+python scripts/download_datasets.py # all datasets
+python scripts/download_datasets.py --datasets sift-128-euclidean # just SIFT-128
 ```
 
 ## Run notebooks
