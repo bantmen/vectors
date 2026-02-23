@@ -15,11 +15,13 @@ def _display_name(r: BenchmarkResult) -> str:
     if r.method == "pq":
         return f"PQ(M={m_val or '?'})"
     if r.method == "pq+rerank":
-        return f"PQ(M={m_val or '?'})+rerank"
+        n_sl = r.params.get("n_shortlist", "")
+        return f"PQ(M={m_val or '?'})+rerank({n_sl})"
     if r.method == "rabitq":
         return "RaBitQ"
     if r.method == "rabitq+rerank":
-        return "RaBitQ+rerank"
+        n_sl = r.params.get("n_shortlist", "")
+        return f"RaBitQ+rerank({n_sl})"
     return r.method
 
 

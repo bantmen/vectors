@@ -122,9 +122,9 @@ def main():
         if r.method == "pq":
             name = f"PQ(M={r.params.get('M', '')})"
         elif r.method == "pq+rerank":
-            name = f"PQ(M={r.params.get('M', '')})+rerank"
+            name = f"PQ(M={r.params.get('M', '')})+rerank({r.params.get('n_shortlist', '')})"
         elif r.method == "rabitq+rerank":
-            name = "RaBitQ+rerank"
+            name = f"RaBitQ+rerank({r.params.get('n_shortlist', '')})"
         else:
             name = "RaBitQ"
         print(f"{name:<20} {r.recall_at_10:>10.3f} {r.qps:>10.0f} "

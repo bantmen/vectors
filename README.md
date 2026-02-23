@@ -47,6 +47,31 @@ Results on SIFT-128 (10k database, 100 queries, k=10):
 | PQ(M=32)+rerank(100) | 1.000 | 1189 | 5441 KB | 0 |
 | RaBitQ+rerank(100) | 0.976 | 815 | 5298 KB | 0 |
 
+Results on GloVe-100 (10k database, 100 queries, k=10, angular/cosine):
+
+| Method | Recall@10 | QPS | Memory | Dist. Bias |
+|---|---|---|---|---|
+| PQ(M=4) | 0.213 | 6033 | 139 KB | -0.48 |
+| PQ(M=5) | 0.227 | 5422 | 149 KB | -0.44 |
+| PQ(M=10) | 0.341 | 3242 | 198 KB | -0.25 |
+| PQ(M=20) | 0.533 | 1925 | 295 KB | -0.10 |
+| PQ(M=25) | 0.618 | 1561 | 344 KB | -0.06 |
+| RaBitQ | 0.457 | 791 | 298 KB | -0.16 |
+| PQ(M=25)+rerank(100) | 0.990 | 1523 | 4250 KB | 0.00 |
+| RaBitQ+rerank(100) | 0.905 | 785 | 4205 KB | 0.00 |
+
+Results on GIST-960 (10k database, 100 queries, k=10):
+
+| Method | Recall@10 | QPS | Memory | Dist. Bias |
+|---|---|---|---|---|
+| PQ(M=4) | 0.167 | 4288 | 999 KB | -0.74 |
+| PQ(M=8) | 0.242 | 2924 | 1038 KB | -0.59 |
+| PQ(M=16) | 0.356 | 1822 | 1116 KB | -0.43 |
+| PQ(M=32) | 0.467 | 1070 | 1273 KB | -0.29 |
+| RaBitQ | 0.741 | 53 | 4850 KB | -0.03 |
+| PQ(M=32)+rerank(100) | 0.958 | 1005 | 38773 KB | 0.00 |
+| RaBitQ+rerank(100) | 0.999 | 50 | 42350 KB | 0.00 |
+
 ## Run tests
 
 ```bash
