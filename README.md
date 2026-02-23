@@ -16,7 +16,7 @@ pip install -e ".[dev]"
 
 ```bash
 python scripts/download_datasets.py # all datasets
-python scripts/download_datasets.py --datasets sift-128-euclidean # just SIFT-128
+python scripts/download_datasets.py --datasets sift-128 # just SIFT-128
 ```
 
 ## Run notebooks
@@ -71,6 +71,18 @@ Results on GIST-960 (10k database, 100 queries, k=10):
 | RaBitQ | 0.741 | 53 | 4850 KB | -0.03 |
 | PQ(M=32)+rerank(100) | 0.958 | 1005 | 38773 KB | 0.00 |
 | RaBitQ+rerank(100) | 0.999 | 50 | 42350 KB | 0.00 |
+
+Results on DBpedia-OpenAI-100k (10k database, 10k queries, k=10, 1536-d angular/cosine):
+
+| Method | Recall@10 | QPS | Memory | Dist. Bias |
+|---|---|---|---|---|
+| PQ(M=4) | 0.226 | 3584 | 1575 KB | -0.20 |
+| PQ(M=8) | 0.275 | 2817 | 1614 KB | -0.18 |
+| PQ(M=16) | 0.336 | 1876 | 1692 KB | -0.17 |
+| PQ(M=32) | 0.427 | 1122 | 1849 KB | -0.14 |
+| RaBitQ | 0.821 | 14 | 11169 KB | -0.00 |
+| PQ(M=32)+rerank(100) | 0.894 | 963 | 61849 KB | 0.00 |
+| RaBitQ+rerank(100) | 1.000 | 15 | 71169 KB | 0.00 |
 
 ## Run tests
 

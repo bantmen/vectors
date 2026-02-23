@@ -45,7 +45,17 @@ def main():
     data = load_dataset(args.dataset)
     train = data["train"]
     database = train[:args.n_db]
-    queries = data["test"][:args.n_queries]
+    test = data["test"]
+    if args.n_queries <= len(test):
+        queries = test[:args.n_queries]
+    else:
+        # Not enough test vectors; sample extra from train (excluding database)
+        remaining = train[args.n_db:]
+        n_extra = args.n_queries - len(test)
+        if n_extra > len(remaining):
+            n_extra = len(remaining)
+        queries = np.concatenate([test, remaining[:n_extra]], axis=0)[:args.n_queries]
+        print(f"Only {len(test)} test vectors; padded to {len(queries)} from train")
 
     # Normalize angular datasets
     if data["distance_metric"] == "angular":

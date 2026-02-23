@@ -27,6 +27,11 @@ DATASETS = {
         "filename": "gist-960-euclidean.hdf5",
         "distance": "euclidean",
     },
+    "dbpedia-openai-100k": {
+        "url": "https://storage.googleapis.com/ann-datasets/ann-benchmarks/dbpedia-openai-100k-angular.hdf5",
+        "filename": "dbpedia-openai-100k-angular.hdf5",
+        "distance": "angular",
+    },
 }
 
 
@@ -87,7 +92,7 @@ def load_dataset(name: str, data_dir: Path | None = None) -> dict:
         train = np.array(f["train"], dtype=np.float32)
         test = np.array(f["test"], dtype=np.float32)
         neighbors = np.array(f["neighbors"], dtype=np.int32)
-        distances = np.array(f["distances"], dtype=np.float32)
+        distances = np.array(f["distances"], dtype=np.float32) if "distances" in f else None
 
     return {
         "train": train,

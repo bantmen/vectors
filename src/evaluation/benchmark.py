@@ -54,10 +54,9 @@ def run_single_benchmark(
     Returns:
         BenchmarkResult with metrics.
     """
-    result = BenchmarkResult(method=method, params=params)
-
     # Create and train quantizer
     n_shortlist = params.pop("n_shortlist", None)
+    result = BenchmarkResult(method=method, params={**params, **({"n_shortlist": n_shortlist} if n_shortlist else {})})
     if method == "pq":
         quantizer = ProductQuantizer(**params)
     elif method == "rabitq":
